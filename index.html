@@ -1,0 +1,291 @@
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>
+        Courses Tracker
+    </title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet"/>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .shining-bg {
+            background: linear-gradient(135deg, #0d1b2a, #1b263b, #415a77);
+            background-size: 400% 400%;
+            animation: gradientAnimation 15s ease infinite;
+        }
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        .scrollbar-transparent::-webkit-scrollbar {
+            width: 12px;
+        }
+        .scrollbar-transparent::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .scrollbar-transparent::-webkit-scrollbar-thumb {
+            background-color: rgba(255, 255, 255, 0.5);
+            border-radius: 6px;
+            border: 3px solid transparent;
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            let currentDate = new Date(2024, 4, 1); // May 1, 2024
+            const dateElement = document.getElementById('current-date');
+
+            function updateDate() {
+                dateElement.textContent = currentDate.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+            }
+
+            document.getElementById('next-button').addEventListener('click', function () {
+                currentDate.setDate(currentDate.getDate() + 1);
+                updateDate();
+            });
+
+            document.getElementById('prev-button').addEventListener('click', function () {
+                currentDate.setDate(currentDate.getDate() - 1);
+                updateDate();
+            });
+
+            updateDate();
+
+            // Slideshow functionality
+            let slideIndex = 0;
+            const slides = document.querySelectorAll('.slide');
+            const totalSlides = slides.length;
+
+            function showSlide(index) {
+                slides.forEach((slide, i) => {
+                    slide.classList.toggle('hidden', i !== index);
+                });
+            }
+
+            document.getElementById('next-slide').addEventListener('click', function () {
+                slideIndex = (slideIndex + 1) % totalSlides;
+                showSlide(slideIndex);
+            });
+
+            document.getElementById('prev-slide').addEventListener('click', function () {
+                slideIndex = (slideIndex - 1 + totalSlides) % totalSlides;
+                showSlide(slideIndex);
+            });
+
+            showSlide(slideIndex);
+        });
+    </script>
+</head>
+<body class="bg-gray-900">
+    <div class="bg-black text-white py-10">
+        <div class="container mx-auto text-center">
+            <h1 class="text-4xl font-bold">
+                Courses Tracker
+                <i class="fas fa-desktop"></i>
+            </h1>
+        </div>
+    </div>
+    <div class="container mx-auto mt-10">
+        <div class="flex items-center mb-6">
+            <img alt="Computer icon" class="w-16 h-16 mr-4" height="100" src="https://storage.googleapis.com/a1aa/image/sO_3_OoF60AXNxgQf2s9GTjpM9DFJrbC0MPbgVypoSc.jpg" width="100"/>
+            <h2 class="text-3xl font-semibold text-white">
+                Courses Tracker
+            </h2>
+        </div>
+        <div class="mb-10">
+            <h3 class="text-xl font-semibold mb-4 text-white">
+                📚 Courses
+            </h3>
+            <div class="overflow-y-auto max-h-96 scrollbar-transparent">
+                <table class="min-w-full bg-gray-800 border border-gray-700 text-white">
+                    <thead>
+                        <tr>
+                            <th class="py-2 px-4 border-b">Aa</th>
+                            <th class="py-2 px-4 border-b">Course name</th>
+                            <th class="py-2 px-4 border-b">Instructor</th>
+                            <th class="py-2 px-4 border-b">URL</th>
+                            <th class="py-2 px-4 border-b">Duration</th>
+                            <th class="py-2 px-4 border-b">Start/end Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="py-2 px-4 border-b"><input checked="" type="checkbox"/></td>
+                            <td class="py-2 px-4 border-b">
+                                <img alt="Photoshop icon" class="inline-block mr-2" height="20" src="https://storage.googleapis.com/a1aa/image/iSocvQo9LGzRmWQ1YkomsRi8GsQqyZU-i1YWx6iVaOQ.jpg" width="20"/>
+                                Photoshop
+                            </td>
+                            <td class="py-2 px-4 border-b">PiXimperfect</td>
+                            <td class="py-2 px-4 border-b">
+                                <a class="text-blue-500" href="https://youtube.com/pla...xMMMT">youtube.com/pla...xMMMT</a>
+                            </td>
+                            <td class="py-2 px-4 border-b">2 hours, 55 minutes, 14 seconds</td>
+                            <td class="py-2 px-4 border-b">April 10, 2023</td>
+                        </tr>
+                        <tr>
+                            <td class="py-2 px-4 border-b"><input checked="" type="checkbox"/></td>
+                            <td class="py-2 px-4 border-b">
+                                <img alt="HTML icon" class="inline-block mr-2" height="20" src="https://storage.googleapis.com/a1aa/image/yuTlYbQ_5QkkcRi24mOkZ_orDOeGhzbsJpTC0NEmWI0.jpg" width="20"/>
+                                HTML
+                            </td>
+                            <td class="py-2 px-4 border-b">freeCodeCamp.org</td>
+                            <td class="py-2 px-4 border-b">
+                                <a class="text-blue-500" href="https://youtube.com/wat...mp.org">youtube.com/wat...mp.org</a>
+                            </td>
+                            <td class="py-2 px-4 border-b">4 hours, 7 minutes, 29 seconds</td>
+                            <td class="py-2 px-4 border-b">May 4, 2023 → May 10, 2023</td>
+                        </tr>
+                        <tr>
+                            <td class="py-2 px-4 border-b"><input type="checkbox"/></td>
+                            <td class="py-2 px-4 border-b">
+                                <img alt="CSS icon" class="inline-block mr-2" height="20" src="https://storage.googleapis.com/a1aa/image/VUZhlrSdBnExLxlbLNUj87q12OIkIBuxa2kgnPPt1fY.jpg" width="20"/>
+                                Cascading Style Sheet
+                            </td>
+                            <td class="py-2 px-4 border-b">Codecademy</td>
+                            <td class="py-2 px-4 border-b">
+                                <a class="text-blue-500" href="https://www.codecademy.com/learn/learn-css">codecademy.com/learn/learn-css</a>
+                            </td>
+                            <td class="py-2 px-4 border-b">3 hours, 30 minutes</td>
+                            <td class="py-2 px-4 border-b">March 1, 2023</td>
+                        </tr>
+                        <tr>
+                            <td class="py-2 px-4 border-b"><input type="checkbox"/></td>
+                            <td class="py-2 px-4 border-b">
+                                <img alt="C++ icon" class="inline-block mr-2" height="20" src="https://storage.googleapis.com/a1aa/image/j2-wvGSO_RD090OvUywDCKxCiAkUs2TYstUG6ncEiXA.jpg" width="20"/>
+                                C++ with DSA
+                            </td>
+                            <td class="py-2 px-4 border-b">GeeksforGeeks</td>
+                            <td class="py-2 px-4 border-b">
+                                <a class="text-blue-500" href="https://www.geeksforgeeks.org/c-plus-plus/">geeksforgeeks.org/c-plus-plus</a>
+                            </td>
+                            <td class="py-2 px-4 border-b">5 hours, 45 minutes</td>
+                            <td class="py-2 px-4 border-b">February 15, 2023</td>
+                        </tr>
+                        <tr>
+                            <td class="py-2 px-4 border-b"><input type="checkbox"/></td>
+                            <td class="py-2 px-4 border-b">
+                                <img alt="Python icon" class="inline-block mr-2" height="20" src="https://storage.googleapis.com/a1aa/image/fOK6jGTNSyun9bHFbh-QzmrK5gm6G3ZK6FjX6UnhhjM.jpg" width="20"/>
+                                Introduction to Computer Science and Programming in Python
+                            </td>
+                            <td class="py-2 px-4 border-b">MIT OpenCourseWare</td>
+                            <td class="py-2 px-4 border-b">
+                                <a class="text-blue-500" href="https://ocw.mit.edu/courses/6-0001-introduction-to-computer-science-and-programming-in-python-fall-2016/">ocw.mit.edu/courses/6-0001</a>
+                            </td>
+                            <td class="py-2 px-4 border-b">10 hours</td>
+                            <td class="py-2 px-4 border-b">January 10, 2023</td>
+                        </tr>
+                        <tr>
+                            <td class="py-2 px-4 border-b"><input type="checkbox"/></td>
+                            <td class="py-2 px-4 border-b">
+                                <img alt="Machine Learning icon" class="inline-block mr-2" height="20" src="https://storage.googleapis.com/a1aa/image/G-EYEE3fLRFmx_-HOYZU9rM6iB9Vsa0sHsKspKy_wds.jpg" width="20"/>
+                                Machine Learning
+                            </td>
+                            <td class="py-2 px-4 border-b">Coursera</td>
+                            <td class="py-2 px-4 border-b">
+                                <a class="text-blue-500" href="https://www.coursera.org/learn/machine-learning">coursera.org/learn/machine-learning</a>
+                            </td>
+                            <td class="py-2 px-4 border-b">11 hours, 30 minutes</td>
+                            <td class="py-2 px-4 border-b">December 5, 2022</td>
+                        </tr>
+                        <tr>
+                            <td class="py-2 px-4 border-b"><input type="checkbox"/></td>
+                            <td class="py-2 px-4 border-b">
+                                <img alt="Operating Systems icon" class="inline-block mr-2" height="20" src="https://storage.googleapis.com/a1aa/image/XEniRF7RaCOUMJbGXkrsdTGqmL3Wci3RsUkm9feBT7E.jpg" width="20"/>
+                                Operating Systems
+                            </td>
+                            <td class="py-2 px-4 border-b">Udacity</td>
+                            <td class="py-2 px-4 border-b">
+                                <a class="text-blue-500" href="https://www.udacity.com/course/operating-systems--ud923">udacity.com/course/operating-systems</a>
+                            </td>
+                            <td class="py-2 px-4 border-b">8 hours</td>
+                            <td class="py-2 px-4 border-b">November 20, 2022</td>
+                        </tr>
+                        <tr>
+                            <td class="py-2 px-4 border-b"><input type="checkbox"/></td>
+                            <td class="py-2 px-4 border-b">
+                                <img alt="Blockchain icon" class="inline-block mr-2" height="20" src="https://storage.googleapis.com/a1aa/image/Vi6jaAGvi7DahchyDc6tkBz2f914jdvPFyd_t3CQACI.jpg" width="20"/>
+                                Blockchain and Money
+                            </td>
+                            <td class="py-2 px-4 border-b">MIT OpenCourseWare</td>
+                            <td class="py-2 px-4 border-b">
+                                <a class="text-blue-500" href="https://ocw.mit.edu/courses/sloan-school-of-management/15-s12-blockchain-and-money-fall-2018/">ocw.mit.edu/courses/15-s12</a>
+                            </td>
+                            <td class="py-2 px-4 border-b">12 hours</td>
+                            <td class="py-2 px-4 border-b">October 10, 2022</td>
+                        </tr>
+                        <tr>
+                            <td class="py-2 px-4 border-b"><input type="checkbox"/></td>
+                            <td class="py-2 px-4 border-b">
+                                <img alt="Database Systems icon" class="inline-block mr-2" height="20" src="https://storage.googleapis.com/a1aa/image/W9D3Yjhh2IlJQGbx5O3EThhq-04psXqvFVg7DnLYbZk.jpg" width="20"/>
+                                Database Systems
+                            </td>
+                            <td class="py-2 px-4 border-b">Stanford Online</td>
+                            <td class="py-2 px-4 border-b">
+                                <a class="text-blue-500" href="https://online.stanford.edu/courses/soe-ydbs1-database-systems">online.stanford.edu/courses/soe-ydbs1</a>
+                            </td>
+                            <td class="py-2 px-4 border-b">9 hours</td>
+                            <td class="py-2 px-4 border-b">September 15, 2022</td>
+                        </tr>
+                        <tr>
+                            <td class="py-2 px-4 border-b"><input type="checkbox"/></td>
+                            <td class="py-2 px-4 border-b">
+                                <img alt="AI icon" class="inline-block mr-2" height="20" src="https://storage.googleapis.com/a1aa/image/dHJBPAJ3DX0_XLWMUHcXl-jcd4bcFKXzynCP04aHXiA.jpg" width="20"/>
+                                Artificial Intelligence: Principles and Techniques
+                            </td>
+                            <td class="py-2 px-4 border-b">Stanford Online</td>
+                            <td class="py-2 px-4 border-b">
+                                <a class="text-blue-500" href="https://online.stanford.edu/courses/cs221-artificial-intelligence-principles-and-techniques">online.stanford.edu/courses/cs221</a>
+                            </td>
+                            <td class="py-2 px-4 border-b">15 hours</td>
+                            <td class="py-2 px-4 border-b">August 1, 2022</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div>
+            <h3 class="text-xl font-semibold mb-4 text-white">
+                📅 Calendar
+            </h3>
+            <div class="shining-bg text-white border border-gray-700 p-4">
+                <div class="flex justify-between items-center mb-4">
+                    <h4 class="text-lg font-semibold" id="current-date">May 1, 2024</h4>
+                    <div>
+                        <button class="text-white-500 hover:text-gray-700" id="prev-button">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <button class="text-white-500 hover:text-gray-700 ml-2" id="next-button">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+                </div>
+                <table class="min-w-full bg-gray-800 border border-gray-700 text-white">
+                    <thead>
+                        <tr>
+                            <th class="py-2 px-4 border-b">Sun</th>
+                            <th class="py-2 px-4 border-b">Mon</th>
+                            <th class="py-2 px-4 border-b">Tue</th>
+                            <th class="py-2 px-4 border-b">Wed</th>
+                            <th class="py-2 px-4 border-b">Thu</th>
+                            <th class="py-2 px-4 border-b">Fri</th>
+                            <th class="py-2 px-4 border-b">Sat</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="py-4 px-4 border-b"></td>
+                            <td class="py-4 px-4 border-b"></td>
+                            <td class="py-4 px-4 border-b"></td>
+                            <td class="py-4 px-4 border-b" id="current-day"></td>
+                            <td class="py-4 px-4 border-b"></td>
+                            <td class="py-4 px-4 border-b"></td>
+                            <td class="py-4 px-4 border-b"></td>
+                        </tr>
+                        <tr>
+                            <td class="py-4 px-4 border-b"></td>
+                            <td class="py-4 px-4 border-b"></td>
+                            <td class="py-4 px-4 border-b"></td
